@@ -9,9 +9,13 @@ class SAE
         //test
         //string[] temp = Extraire(1, 15);
         //afficherHoraire(temp);
+        //Console.WriteLine(int.Parse("01"));
+        //DateTime date = DateTime.Now;
+        //Console.WriteLine(date.ToString("yy-mm-dd hh:mm:ss"));
         Traverse test = new Traverse();
         test = demandeNom(test);
-        Console.WriteLine(test.nom + test.idLiaison + test.date);
+        //Console.WriteLine(test.nom + "\n" + test.idLiaison + "\n" + test.date + test.heure);
+	//Console.WriteLine(test.heure + "\n" + test.horodatage);
 
 
 
@@ -85,9 +89,9 @@ class SAE
     }
     static void afficherHoraire(string[] tab)
     {
-        foreach (var item in tab)
+        for (int i = 0; i < tab.GetLength(0); i++)
         {
-            Console.WriteLine(item);
+            Console.WriteLine(i + 1 + ") " + tab[i]);
         }
     }
     static void afficheLogo()
@@ -122,7 +126,7 @@ class SAE
         Console.WriteLine("Entre le numéro");
         int.TryParse(Console.ReadLine(), out id);
         traverse.idLiaison = id;
-	traverse = demandeJour(traverse);
+        traverse = demandeJour(traverse);
         return traverse;
     }
     static Traverse demandeJour(Traverse traverse)
@@ -143,7 +147,38 @@ class SAE
         {
             date = date + jour;
         }
-	traverse.date = date;
+        traverse.date = date;
+        traverse =demandeHoraire(traverse);
+
+        return traverse;
+
+    }
+    static Traverse demandeHoraire(Traverse traverse)
+    {
+        Console.Clear();
+        afficheLogo();
+
+        int heure;
+        Console.WriteLine("Quelle heure ?");
+	// on prend les 2 dernier caractère pour avoir le jour
+        int jour = int.Parse(traverse.date.Substring(8, 2));
+	//on appelle Extraire pour récuperer un tableau des horaire du jour
+        string[] horaire = Extraire(traverse.idLiaison, jour);
+	//on affiche les horaires
+        afficherHoraire(horaire);
+        heure = int.Parse(Console.ReadLine());
+	//l'heure entrer par l'utilisateur est décalé de 1
+        traverse.heure = horaire[heure - 1];
+        Console.WriteLine(traverse.heure);
+
+        traverse=Horodatage(traverse);
+        return traverse;
+    }
+    static Traverse Horodatage(Traverse traverse)
+    {
+        DateTime date = DateTime.Now;
+        string res = date.ToString("yy-mm-dd hh:mm:ss");
+        traverse.horodatage = res;
 
         return traverse;
 
