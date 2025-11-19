@@ -11,7 +11,7 @@ class SAE
         //afficherHoraire(temp);
         Traverse test = new Traverse();
         test = demandeNom(test);
-        Console.WriteLine(test.nom + test.idLiaison);
+        Console.WriteLine(test.nom + test.idLiaison + test.date);
 
 
 
@@ -99,6 +99,7 @@ class SAE
 
 
     }
+    // on va remplir une structure Traverse pour commencer la reservation
     static Traverse demandeNom(Traverse traverse)
     {
         afficheLogo();
@@ -110,17 +111,43 @@ class SAE
         res = demandeId(res);
         return res;
     }
+    // on va diser le trvail en faisant une fonction pour chaque argument de la structure
+    // chaque fonction appele la suivante a la fin pour tous remplir 
     static Traverse demandeId(Traverse traverse)
     {
         int id = 0;
         Console.Clear();
-	afficheLogo();
+        afficheLogo();
         Console.WriteLine("Quelle liaison voulez vous prendre ? \n 1) Lorient --> Groix \n 2) Groix --> Lorient \n 3) Quiberon --> Palais \n 4) Palais --> Quiberon ");
         Console.WriteLine("Entre le numéro");
         int.TryParse(Console.ReadLine(), out id);
         traverse.idLiaison = id;
+	traverse = demandeJour(traverse);
+        return traverse;
+    }
+    static Traverse demandeJour(Traverse traverse)
+    {
+        string jour = "";
+
+        string date = "2025-11-";
+        Console.Clear();
+        afficheLogo();
+        Console.WriteLine("Quelle jour de novembre 2025 vous vous partir ?");
+        jour = Console.ReadLine();
+        if (jour.Length < 2) // on rajoute un zero si l'utilisateur donne qu'un chiffre pour respecter le format demandé
+        {
+            jour = "0" + jour;
+            date = date + jour;
+        }
+        else
+        {
+            date = date + jour;
+        }
+	traverse.date = date;
+
         return traverse;
 
     }
+
 
 }
