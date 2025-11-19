@@ -7,8 +7,13 @@ class SAE
     static void Main()
     {
         //test
-        string[] temp = Extraire(1, 15);
-        afficherHoraire(temp);
+        //string[] temp = Extraire(1, 15);
+        //afficherHoraire(temp);
+        Traverse test = new Traverse();
+        test = demandeNom(test);
+        Console.WriteLine(test.nom + test.idLiaison);
+
+
 
     }
     struct Traverse
@@ -42,7 +47,7 @@ class SAE
     static string[] Extraire(int id, int jour)
     {
 
-        string[] temp =null;
+        string[] temp = null;
         string nomFichier = "";
         switch (id) //associ id avec le bon nom de fichier
         {
@@ -68,7 +73,7 @@ class SAE
         {
             int i = 1;
             string ligne;
-	//on parcour le fichier jusqu'a que l'on arrive au bon jour(num ligne)
+            //on parcour le fichier jusqu'a que l'on arrive au bon jour(num ligne)
             while (!horaire.EndOfStream && i <= jour)
             {
                 ligne = horaire.ReadLine();
@@ -85,4 +90,37 @@ class SAE
             Console.WriteLine(item);
         }
     }
+    static void afficheLogo()
+    {
+        string msghaut = " ⡷⣸ ⢀⡀ ⡀⢀ ⡀⢀ ⢀⡀ ⡇ ⡇ ⢀⡀   ⡀⣀ ⢀⡀ ⢀⣀ ⢀⡀ ⡀⣀ ⡀⢀ ⢀⣀ ⣰⡀ ⠄ ⢀⡀ ⣀⡀";
+        string msgbas = " ⠇⠹ ⠣⠜ ⠣⠼ ⠱⠃ ⠣⠭ ⠣ ⠣ ⠣⠭   ⠏  ⠣⠭ ⠭⠕ ⠣⠭ ⠏  ⠱⠃ ⠣⠼ ⠘⠤ ⠇ ⠣⠜ ⠇⠸";
+        Console.WriteLine(msghaut);
+        Console.WriteLine(msgbas);
+
+
+    }
+    static Traverse demandeNom(Traverse traverse)
+    {
+        afficheLogo();
+        string nom = "";
+        Traverse res = new Traverse();
+        Console.WriteLine("entrer votre nom :");
+        nom = Console.ReadLine();
+        res.nom = nom;
+        res = demandeId(res);
+        return res;
+    }
+    static Traverse demandeId(Traverse traverse)
+    {
+        int id = 0;
+        Console.Clear();
+	afficheLogo();
+        Console.WriteLine("Quelle liaison voulez vous prendre ? \n 1) Lorient --> Groix \n 2) Groix --> Lorient \n 3) Quiberon --> Palais \n 4) Palais --> Quiberon ");
+        Console.WriteLine("Entre le numéro");
+        int.TryParse(Console.ReadLine(), out id);
+        traverse.idLiaison = id;
+        return traverse;
+
+    }
+
 }
