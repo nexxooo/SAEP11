@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Compagnie Alsacienne de Navigation</title>
+        <link rel="stylesheet" href="styleV2.css">	
 </head>
 <body>
     <header>
@@ -17,7 +18,108 @@
 		</ul>
 	</nav>	
     <main>
-    
+    <div class="facture">
+            <!-- EN-TÊTE AVEC LOGO -->
+            <div class="facture-header">
+                <img src="CAN.png" alt="Logo CAN" class="logo"/>
+                
+            </div>
+            
+            <!-- TITRE -->
+            <h1 class="facture-title">Facture</h1>
+            
+            <!-- DATE ET LIEU -->
+            <p class="date-lieu">Illkirch le 20/10/2025</p>
+            
+            <!-- INFOS RÉSERVATION -->
+            <div class="info-section">
+                <p><span class="label">Réservation n° :</span> <span class="value">2025705</span></p>
+                <p><span class="label">Nom de réservation :</span> <span class="value">Famille Addams</span></p>
+            </div>
+            
+            <!-- INFOS TRAVERSÉE -->
+            <div class="info-section">
+                <p><span class="label">Traversée :</span> <span class="value">Lorient - Groix</span></p>
+                <p><span class="label">Date :</span> <span class="value">01/11/2025</span></p>
+                <p><span class="label">Départ :</span> <span class="value">09:45</span></p>
+                <p><span class="label">Bateau :</span> <span class="value">Breizh Nevez</span></p>
+            </div>
+            
+            <!-- TABLEAU PERSONNES -->
+            <div class="table-section">
+                <h3>Les personnes</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Catégorie</th>
+                            <th>Nombre</th>
+                            <th>Prix unitaire</th>
+                            <th>Prix ligne</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Adulte 26 ans et plus</td>
+                            <td>2</td>
+                            <td>18,75</td>
+                            <td>37,50</td>
+                        </tr>
+                        <tr>
+                            <td>Jeune 18 à 25 ans inclus</td>
+                            <td>1</td>
+                            <td>13,80</td>
+                            <td>13,80</td>
+                        </tr>
+                        <tr>
+                            <td>Enfant 4 à 17 inclus</td>
+                            <td>1</td>
+                            <td>11,25</td>
+                            <td>11,25</td>
+                        </tr>
+                        <tr>
+                            <td>Bébé moins de 4 ans</td>
+                            <td>1</td>
+                            <td>gratuit</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="sous-total">Sous-total personnes : <span>62,55 €</span></p>
+            </div>
+            
+            <!-- TABLEAU VÉHICULES -->
+            <div class="table-section">
+                <h3>Les véhicules</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Catégorie</th>
+                            <th>Quantité</th>
+                            <th>Prix unitaire</th>
+                            <th>Prix ligne</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Catégorie 4 plus de 4,80 m</td>
+                            <td>1</td>
+                            <td>210,90</td>
+                            <td>210,90</td>
+                        </tr>
+                        <tr>
+                            <td>Trottinette électrique</td>
+                            <td>2</td>
+                            <td>4,70</td>
+                            <td>4,70</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="sous-total">Sous-total véhicules : <span>215,60 €</span></p>
+            </div>
+            
+            <!-- PRIX TOTAL -->
+            <p class="prix-total"><span class="label">Prix total :</span> <span class="value">278,15 €</span></p>
+        </div>
     </main>
 </body>
 <footer>
