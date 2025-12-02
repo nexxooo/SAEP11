@@ -1,19 +1,110 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Carte d'embarquement</title>
-    <link rel="stylesheet" href="styleV1.css">
+    <meta charset="utf-8" />
+    <title>Compagnie Alsacienne de Navigation</title>
+    <link rel="stylesheet" href="styleV1.css">	
 </head>
 <body>
+    <header>
 
-<main class="carte">
-<img src="CAN.png" alt="Logo CAN">
-
-   
-
-
-</main>
-
+    </header>
+    <nav>
+		<ul>
+			<li><a href=>Afficher les cartes d'embarquement d'une réservation</a></li>
+			<li><a href=>Afficher la facture d'une réservation</a></li>
+			<li><a href=>Afficher un tableau de bord</a></li>
+			<li><a href=>Afficher des statistiques</a></li>
+		</ul>
+	</nav>	
+   <main>
+        <div class="card">
+            <!-- Logo en position absolue en haut à gauche -->
+            <div class="company-header">
+                <img src="CAN.png" alt="Logo CAN" class="logo"/>
+                <div class="company-name">
+                    <span>Compagnie</span>
+                    <span>Alsacienne de</span>
+                    <span>Navigation</span>
+                </div>
+            </div>
+            
+            <!-- COLONNE GAUCHE -->
+            <div class="left-section">
+                <table class="trip-info">
+                    <tr>
+                        <td class="label">Gare de départ</td>
+                        <td class="value">Lorient</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Gare d'arrivée</td>
+                        <td class="value">Groix</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Date</td>
+                        <td class="value">01/11/2025</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Heure départ</td>
+                        <td class="value">09:45</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Bateau</td>
+                        <td class="value">Breizh Nevez</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <!-- COLONNE DROITE -->
+            <div class="right-section">
+                <h2 class="card-title">Carte d'embarquement</h2>
+                
+                <!-- Boîte blanche avec bordure noire -->
+                <div class="right-content-box">
+                    <!-- Partie haute -->
+                    <table class="reservation-info">
+                        <tr>
+                            <td class="label">Réservation</td>
+                            <td class="value">2025705</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Nom</td>
+                            <td class="value">Famille Addams</td>
+                        </tr>
+                    </table>
+                    
+                    <!-- Partie basse -->
+                    <div class="passenger-section">
+                        <div class="passenger-header">
+                            <span>Passager</span>
+                            <img src="qrcode.png" alt="QR Code" class="qrcode"/>
+                        </div>
+                        
+                        <table class="passenger-info">
+                            <tr>
+                                <td class="label">Nom</td>
+                                <td class="value">Addams</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Prénom</td>
+                                <td class="value">Mercredi</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Catégorie</td>
+                                <td class="value">Jeune 18-25 ans</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Prix</td>
+                                <td class="value">13,80 €</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+    </footer>
 </body>
 </html>
