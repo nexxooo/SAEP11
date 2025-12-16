@@ -15,7 +15,7 @@ class SAE
         //Traverse test = new Traverse();
         //test = demandeNom(test);
         Passager[] test = DemandePassager();
-        Console.WriteLine(test[0].nom + test[0].prenom);
+        Console.WriteLine(test[0].nom + test[0].prenom+test[0].codeCategorie);
         //Console.WriteLine(test.nom + "\n" + test.idLiaison + "\n" + test.date + test.heure);
         //Console.WriteLine(test.heure + "\n" + test.horodatage);
 
@@ -232,32 +232,54 @@ class SAE
         prenom = Console.ReadLine();
         passager.prenom = prenom;
 
-        passager = CategoriePassager();
+        passager = CategoriePassager(passager);
         return passager;
     }
-    static Passager CategoriePassger(Passager passager)
+    static Passager CategoriePassager(Passager passager)
     {
-        Dictionary<string> categorie =
-    {
-        {"Adulte 26 ans et plus ","adu26p "},
-        {"Jeune 18 à 25 ans inclus","jeu1825"},
-        {"Enfant 4 à 17 ans inclus", "enf417"},
-	{"Bébé moins de 4 ans","bebe"},
-	{"Animal de compagnie","ancomp"}
-    };
-	Console.Clear();
-	afficheLogo();
-	Console.WriteLine("quelle catégorie");
+          Dictionary<int, string[]> categorie = new Dictionary<int, string[]>
+{
+    { 1, new string[] { "Adulte 26 ans et plus ", "adu26p " } },
+    { 2, new string[] { "Jeune 18 à 25 ans inclus", "jeu1825" } },
+    { 3, new string[] { "Enfant 4 à 17 ans inclus", "enf417" } },
+    { 4, new string[] { "Bébé moins de 4 ans", "bebe" } },
+    { 5, new string[] { "Animal de compagnie", "ancomp" } }
+};
+      Console.Clear();
+        afficheLogo();
+        Console.WriteLine("quelle catégorie");
 
-	int i =0;
-	foreach (string item in categorie.Keys)
-	{
-		Console.WriteLine();
-	    
-	}
+        foreach (int item in categorie.Keys)
+        {
+            Console.WriteLine(item + " "+ categorie[item][0]);
+
+        }
+	int r = int.Parse(Console.ReadLine());
+	passager.codeCategorie= categorie[r][1];
+
+        return passager;
 
     }
 
+static Vehicule[] DemandeVehicule()
+    {
+        Console.Clear();
+        afficheLogo();
+        Console.WriteLine("combien de Vehicule ?"); // on demande le nombre de passager
+        int nombre;
+        nombre = int.Parse(Console.ReadLine());
 
+
+        Vehicule[] tableVehicule; // on crée le tableau 
+        tablePassager = new Passager[nombre];
+        for (int i = 0; i < nombre; i++)
+        {
+            Vehicule nouveauxVehicule = new Vehicule();
+            //nouveauxVehicule = NomPassager(nouveauxVehicule);
+            table[i] = nouveauxVehicule;
+
+        }
+        return tableVehicule;
+    }
 
 }
