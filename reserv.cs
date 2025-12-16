@@ -12,10 +12,12 @@ class SAE
         //Console.WriteLine(int.Parse("01"));
         //DateTime date = DateTime.Now;
         //Console.WriteLine(date.ToString("yy-mm-dd hh:mm:ss"));
-        Traverse test = new Traverse();
-        test = demandeNom(test);
+        //Traverse test = new Traverse();
+        //test = demandeNom(test);
+        Passager[] test = DemandePassager();
+        Console.WriteLine(test[0].nom + test[0].prenom+test[0].codeCategorie);
         //Console.WriteLine(test.nom + "\n" + test.idLiaison + "\n" + test.date + test.heure);
-	//Console.WriteLine(test.heure + "\n" + test.horodatage);
+        //Console.WriteLine(test.heure + "\n" + test.horodatage);
 
 
 
@@ -31,7 +33,9 @@ class SAE
     }
     struct Passager
     {
-        public Dictionary<string, string> passager;
+        public string nom;
+        public string prenom;
+        public string codeCategorie;
 
     }
     struct Vehicule
@@ -148,7 +152,7 @@ class SAE
             date = date + jour;
         }
         traverse.date = date;
-        traverse =demandeHoraire(traverse);
+        traverse = demandeHoraire(traverse);
 
         return traverse;
 
@@ -160,18 +164,18 @@ class SAE
 
         int heure;
         Console.WriteLine("Quelle heure ?");
-	// on prend les 2 dernier caractère pour avoir le jour
+        // on prend les 2 dernier caractère pour avoir le jour
         int jour = int.Parse(traverse.date.Substring(8, 2));
-	//on appelle Extraire pour récuperer un tableau des horaire du jour
+        //on appelle Extraire pour récuperer un tableau des horaire du jour
         string[] horaire = Extraire(traverse.idLiaison, jour);
-	//on affiche les horaires
+        //on affiche les horaires
         afficherHoraire(horaire);
         heure = int.Parse(Console.ReadLine());
-	//l'heure entrer par l'utilisateur est décalé de 1
+        //l'heure entrer par l'utilisateur est décalé de 1
         traverse.heure = horaire[heure - 1];
         Console.WriteLine(traverse.heure);
 
-        traverse=Horodatage(traverse);
+        traverse = Horodatage(traverse);
         return traverse;
     }
     static Traverse Horodatage(Traverse traverse)
@@ -183,6 +187,99 @@ class SAE
         return traverse;
 
     }
+    static Passager[] DemandePassager()
+    {
+        Console.Clear();
+        afficheLogo();
+        Console.WriteLine("combien de passager ?"); // on demande le nombre de passager
+        int nombre;
+        nombre = int.Parse(Console.ReadLine());
 
+
+        Passager[] tablePassager; // on crée le tableau 
+        tablePassager = new Passager[nombre];
+        for (int i = 0; i < nombre; i++)
+        {
+            Passager nouveauxPassager = new Passager();
+            nouveauxPassager = NomPassager(nouveauxPassager);
+            tablePassager[i] = nouveauxPassager;
+
+        }
+        return tablePassager;
+
+    }
+    static Passager NomPassager(Passager passager)
+    {
+        Console.Clear();
+        afficheLogo();
+        Console.WriteLine("entrer nom passager");
+
+        string nom;
+        nom = Console.ReadLine();
+        passager.nom = nom;
+
+        passager = PrenomPassager(passager);
+        return passager;
+
+    }
+    static Passager PrenomPassager(Passager passager)
+    {
+        Console.Clear();
+        afficheLogo();
+        Console.WriteLine("entrer prénom passager");
+
+        string prenom;
+        prenom = Console.ReadLine();
+        passager.prenom = prenom;
+
+        passager = CategoriePassager(passager);
+        return passager;
+    }
+    static Passager CategoriePassager(Passager passager)
+    {
+          Dictionary<int, string[]> categorie = new Dictionary<int, string[]>
+{
+    { 1, new string[] { "Adulte 26 ans et plus ", "adu26p " } },
+    { 2, new string[] { "Jeune 18 à 25 ans inclus", "jeu1825" } },
+    { 3, new string[] { "Enfant 4 à 17 ans inclus", "enf417" } },
+    { 4, new string[] { "Bébé moins de 4 ans", "bebe" } },
+    { 5, new string[] { "Animal de compagnie", "ancomp" } }
+};
+      Console.Clear();
+        afficheLogo();
+        Console.WriteLine("quelle catégorie");
+
+        foreach (int item in categorie.Keys)
+        {
+            Console.WriteLine(item + " "+ categorie[item][0]);
+
+        }
+	int r = int.Parse(Console.ReadLine());
+	passager.codeCategorie= categorie[r][1];
+
+        return passager;
+
+    }
+
+static Vehicule[] DemandeVehicule()
+    {
+        Console.Clear();
+        afficheLogo();
+        Console.WriteLine("combien de Vehicule ?"); // on demande le nombre de passager
+        int nombre;
+        nombre = int.Parse(Console.ReadLine());
+
+
+        Vehicule[] tableVehicule; // on crée le tableau 
+        tablePassager = new Passager[nombre];
+        for (int i = 0; i < nombre; i++)
+        {
+            Vehicule nouveauxVehicule = new Vehicule();
+            //nouveauxVehicule = NomPassager(nouveauxVehicule);
+            table[i] = nouveauxVehicule;
+
+        }
+        return tableVehicule;
+    }
 
 }
