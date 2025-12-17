@@ -153,3 +153,9 @@ main {
     font-weight: bold;
     color: black;
 }
+.nav-menu {
+  display: flex;       /* Active le mode flexible (alignement en ligne par défaut) */
+  list-style: none;    /* Retire les puces (points noirs) */
+  padding: 0;          /* Retire le padding par défaut du navigateur */
+  gap: 20px;           /* Ajoute un espace de 20px entre chaque élément */
+}
