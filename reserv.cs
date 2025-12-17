@@ -192,6 +192,11 @@ class SAE
         return traverse;
 
     }
+
+/////// on remplie les info pour chaque passager 
+///
+///
+
     static Passager[] DemandePassager()
     {
         Console.Clear();
@@ -265,6 +270,10 @@ class SAE
         return passager;
 
     }
+//// on remplie les info pour les véhicules
+///
+///
+///
 
     static Vehicule[] DemandeVehicule()
     {
@@ -329,6 +338,10 @@ static Vehicule qtVehicule(Vehicule vehicule)
 	return vehicule;	
 }
 
+
+/// on remplie toute les structure reservation
+///
+///
 static Reservation demandeReserv()
 {
 	Reservation resrv = new Reservation();
