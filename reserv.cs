@@ -14,10 +14,15 @@ class SAE
         //Console.WriteLine(date.ToString("yy-mm-dd hh:mm:ss"));
         //Traverse test = new Traverse();
         //test = demandeNom(test);
-        Passager[] test = DemandePassager();
-        Console.WriteLine(test[0].nom + test[0].prenom+test[0].codeCategorie);
+        //Passager[] test = DemandePassager();
+        //Console.WriteLine(test[0].nom + test[0].prenom + test[0].codeCategorie);
         //Console.WriteLine(test.nom + "\n" + test.idLiaison + "\n" + test.date + test.heure);
         //Console.WriteLine(test.heure + "\n" + test.horodatage);
+        //Vehicule[] test = DemandeVehicule();
+        //Console.WriteLine(test[0].codeCategorie+" "+test[0].quantite);
+	Reservation resev = new Reservation();
+	resev = demandeReserv();
+	Console.WriteLine(resev.passager[0].nom);	
 
 
 
@@ -108,7 +113,7 @@ class SAE
 
     }
     // on va remplir une structure Traverse pour commencer la reservation
-    static Traverse demandeNom(Traverse traverse)
+    static Traverse demandeNom()
     {
         afficheLogo();
         string nom = "";
@@ -119,7 +124,7 @@ class SAE
         res = demandeId(res);
         return res;
     }
-    // on va diser le trvail en faisant une fonction pour chaque argument de la structure
+    // on va diviser le trvail en faisant une fonction pour chaque argument de la structure
     // chaque fonction appele la suivante a la fin pour tous remplir 
     static Traverse demandeId(Traverse traverse)
     {
@@ -237,7 +242,7 @@ class SAE
     }
     static Passager CategoriePassager(Passager passager)
     {
-          Dictionary<int, string[]> categorie = new Dictionary<int, string[]>
+        Dictionary<int, string[]> categorie = new Dictionary<int, string[]>
 {
     { 1, new string[] { "Adulte 26 ans et plus ", "adu26p " } },
     { 2, new string[] { "Jeune 18 à 25 ans inclus", "jeu1825" } },
@@ -245,23 +250,23 @@ class SAE
     { 4, new string[] { "Bébé moins de 4 ans", "bebe" } },
     { 5, new string[] { "Animal de compagnie", "ancomp" } }
 };
-      Console.Clear();
+        Console.Clear();
         afficheLogo();
         Console.WriteLine("quelle catégorie");
 
         foreach (int item in categorie.Keys)
         {
-            Console.WriteLine(item + " "+ categorie[item][0]);
+            Console.WriteLine(item + " " + categorie[item][0]);
 
         }
-	int r = int.Parse(Console.ReadLine());
-	passager.codeCategorie= categorie[r][1];
+        int r = int.Parse(Console.ReadLine());
+        passager.codeCategorie = categorie[r][1];
 
         return passager;
 
     }
 
-static Vehicule[] DemandeVehicule()
+    static Vehicule[] DemandeVehicule()
     {
         Console.Clear();
         afficheLogo();
@@ -271,15 +276,68 @@ static Vehicule[] DemandeVehicule()
 
 
         Vehicule[] tableVehicule; // on crée le tableau 
-        tablePassager = new Passager[nombre];
+        tableVehicule = new Vehicule[nombre];
         for (int i = 0; i < nombre; i++)
         {
             Vehicule nouveauxVehicule = new Vehicule();
-            //nouveauxVehicule = NomPassager(nouveauxVehicule);
-            table[i] = nouveauxVehicule;
+            nouveauxVehicule = CategorieVehicule(nouveauxVehicule);
+            tableVehicule[i] = nouveauxVehicule;
 
         }
         return tableVehicule;
     }
+    static Vehicule CategorieVehicule(Vehicule vehicule)
+    {
+        Dictionary<int, string[]> categorieVehicules = new Dictionary<int, string[]>
+{
+    { 1, new string[] { "Trottinette électrique", "trot" } },
+    { 2, new string[] { "Vélo ou remorque à vélo", "velo" } },
+    { 3, new string[] { "Vélo électrique", "velelec" } },
+    { 4, new string[] { "Vélo cargo ou tandem", "cartand" } },
+    { 5, new string[] { "Deux-roues <= 125 cm3", "mobil" } },
+    { 6, new string[] { "Deux-roues > 125 cm3", "moto" } },
+    { 7, new string[] { "Voiture moins de 4 m", "cat1" } },
+    { 8, new string[] { "Voiture de 4 m à 4.39 m", "cat2" } },
+    { 9, new string[] { "Voiture de 4.40 m à 4.79 m", "cat3" } },
+    { 10, new string[] { "Voiture 4.80 m et plus", "cat4" } },
+    { 11, new string[] { "Camping-car - véhicule plus de 2.10 de haut", "camp" } }
+};
+        Console.Clear();
+        afficheLogo();
+        Console.WriteLine("quelle catégorie");
+        foreach (var item in categorieVehicules.Keys)
+        {
+            Console.WriteLine(item + " " + categorieVehicules[item][0]);
+        }
+
+        int r = int.Parse(Console.ReadLine());
+        vehicule.codeCategorie = categorieVehicules[r][1];
+
+	vehicule = qtVehicule(vehicule);
+        return vehicule;
+
+    }
+static Vehicule qtVehicule(Vehicule vehicule)
+{
+	Console.Clear();
+	afficheLogo();
+	Console.WriteLine("quelle quantitée ?");
+
+	int qt = int.Parse(Console.ReadLine());
+	vehicule.quantite = qt;
+
+	return vehicule;	
+}
+
+static Reservation demandeReserv()
+{
+	Reservation resrv = new Reservation();
+
+	resrv.Traversé = demandeNom();
+	resrv.passager = DemandePassager();
+	resrv.vehicule = DemandeVehicule();
+
+	return resrv;
+}
 
 }
