@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Web.Script.Serialization;
 
 class SAE
 {
@@ -22,7 +23,8 @@ class SAE
         //Console.WriteLine(test[0].codeCategorie+" "+test[0].quantite);
 	Reservation resev = new Reservation();
 	resev = demandeReserv();
-	Console.WriteLine(resev.passager[0].nom);	
+	//Console.WriteLine(resev.passager[0].nom);	
+	faireJson(resev);
 
 
 
@@ -51,9 +53,9 @@ class SAE
     }
     struct Reservation
     {
-        public Traverse Traversé;
-        public Passager[] passager;
-        public Vehicule[] vehicule;
+        public Traverse reservation;
+        public Passager[] passagers;
+        public Vehicule[] vehicules;
 
 
     }
@@ -346,11 +348,22 @@ static Reservation demandeReserv()
 {
 	Reservation resrv = new Reservation();
 
-	resrv.Traversé = demandeNom();
-	resrv.passager = DemandePassager();
-	resrv.vehicule = DemandeVehicule();
+	resrv.reservation = demandeNom();
+	resrv.passagers = DemandePassager();
+	resrv.vehicules = DemandeVehicule();
 
 	return resrv;
+}
+
+static void faireJson(Reservation reserv)
+{
+	JavaScriptSerializer serializer = new JavaScriptSerializer();
+	string json = serializer.Serialize(reserv);
+
+	json = "["+ json+"]"; 
+
+	File.WriteAllText("donnees.json", json);
+
 }
 
 }
