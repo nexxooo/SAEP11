@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Web.Script.Serialization;
+using System.Web.Script.Serialization; // bibliothèque deja inclue dans mono pour crée les json
 
 class SAE
 {
@@ -354,15 +354,18 @@ static Reservation demandeReserv()
 
 	return resrv;
 }
+/////// creation des json 
+
+
 
 static void faireJson(Reservation reserv)
 {
 	JavaScriptSerializer serializer = new JavaScriptSerializer();
-	string json = serializer.Serialize(reserv);
+	string json = serializer.Serialize(reserv);  //on donne notre structure et la on recoies une chaine de caratère on bon format  
 
-	json = "["+ json+"]"; 
+	json = "["+ json+"]";  // on doit rajoutre les [] au debut et a la fin car notre structure n'est pas dans une liste 
 
-	File.WriteAllText("donnees.json", json);
+	File.WriteAllText("donnees.json", json); // on ecrase et on remplace dans le fichier 
 
 }
 
