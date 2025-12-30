@@ -21,10 +21,12 @@ class SAE
         //Console.WriteLine(test.heure + "\n" + test.horodatage);
         //Vehicule[] test = DemandeVehicule();
         //Console.WriteLine(test[0].codeCategorie+" "+test[0].quantite);
-	Reservation resev = new Reservation();
-	resev = demandeReserv();
-	//Console.WriteLine(resev.passager[0].nom);	
-	faireJson(resev);
+        Reservation resev = new Reservation();
+        resev = demandeReserv();
+	double prix = calculePrix(resev);
+	Console.WriteLine(prix);
+        //Console.WriteLine(resev.passager[0].nom);	
+        //faireJson(resev);
 
 
 
@@ -195,9 +197,9 @@ class SAE
 
     }
 
-/////// on remplie les info pour chaque passager 
-///
-///
+    /////// on remplie les info pour chaque passager 
+    ///
+    ///
 
     static Passager[] DemandePassager()
     {
@@ -272,10 +274,10 @@ class SAE
         return passager;
 
     }
-//// on remplie les info pour les véhicules
-///
-///
-///
+    //// on remplie les info pour les véhicules
+    ///
+    ///
+    ///
 
     static Vehicule[] DemandeVehicule()
     {
@@ -324,49 +326,124 @@ class SAE
         int r = int.Parse(Console.ReadLine());
         vehicule.codeCategorie = categorieVehicules[r][1];
 
-	vehicule = qtVehicule(vehicule);
+        vehicule = qtVehicule(vehicule);
         return vehicule;
 
     }
-static Vehicule qtVehicule(Vehicule vehicule)
-{
-	Console.Clear();
-	afficheLogo();
-	Console.WriteLine("quelle quantitée ?");
+    static Vehicule qtVehicule(Vehicule vehicule)
+    {
+        Console.Clear();
+        afficheLogo();
+        Console.WriteLine("quelle quantitée ?");
 
-	int qt = int.Parse(Console.ReadLine());
-	vehicule.quantite = qt;
+        int qt = int.Parse(Console.ReadLine());
+        vehicule.quantite = qt;
 
-	return vehicule;	
-}
-
-
-/// on remplie toute les structure reservation
-///
-///
-static Reservation demandeReserv()
-{
-	Reservation resrv = new Reservation();
-
-	resrv.reservation = demandeNom();
-	resrv.passagers = DemandePassager();
-	resrv.vehicules = DemandeVehicule();
-
-	return resrv;
-}
-/////// creation des json 
+        return vehicule;
+    }
 
 
+    /// on remplie toute les structure reservation
+    ///
+    ///
+    static Reservation demandeReserv()
+    {
+        Reservation resrv = new Reservation();
 
-static void faireJson(Reservation reserv)
-{
-	JavaScriptSerializer serializer = new JavaScriptSerializer();
-	string json = serializer.Serialize(reserv);  //on donne notre structure et la on recoies une chaine de caratère on bon format  
+        resrv.reservation = demandeNom();
+        resrv.passagers = DemandePassager();
+        resrv.vehicules = DemandeVehicule();
 
-	json = "["+ json+"]";  // on doit rajoutre les [] au debut et a la fin car notre structure n'est pas dans une liste 
+        return resrv;
+    }
+    /////// creation des json 
 
-	File.WriteAllText("donnees.json", json); // on ecrase et on remplace dans le fichier 
 
-}
+
+    static void faireJson(Reservation reserv)
+    {
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
+        string json = serializer.Serialize(reserv);  //on donne notre structure et la on recoies une chaine de caratère on bon format  
+
+        json = "[" + json + "]";  // on doit rajoutre les [] au debut et a la fin car notre structure n'est pas dans une liste 
+
+        File.WriteAllText("donnees.json", json); // on ecrase et on remplace dans le fichier 
+
+    }
+
+    static double calculePrix(Reservation reserv)
+    {
+        double totale = 0;
+        int destination = reserv.reservation.idLiaison; // on recupere la liaison 
+
+        if (destination == 1 || destination == 2) // on fait correspondre l'id avec la destination pour le calcule du prix 
+        {
+            Dictionary<string, double> tarifsP = new Dictionary<string, double> // prix pour Groix 
+        {
+            { "adu26p", 18.75 },
+            { "jeu1825", 13.80 },
+            { "enf417", 11.25 },
+            { "bebe", 0 },
+            { "ancomp", 3.35 }
+        };
+            Dictionary<string, double> tarifsV = new Dictionary<string, double>
+        {
+            { "trot", 4.70 },
+            { "velo", 8.20 },
+            { "velelec", 11.00 },
+            { "cartand", 16.45 },
+            { "mobil", 23.10 },
+            { "moto", 66.05 },
+            { "cat1", 96.05 },
+            { "cat2", 114.80 },
+            { "cat3", 174.45 },
+            { "cat4", 210.90 },
+            { "camp", 330.20 }
+        };
+            foreach (Passager item in reserv.passagers) // on ajoute le prix pour chaque passager 
+            {
+                totale = totale + tarifsP[item.codeCategorie];
+            }
+            foreach (Vehicule item in reserv.vehicules) // on ajoute le prix pour les vehicule en prennant compte de la quantité 
+            {
+                totale = totale + tarifsV[item.codeCategorie] * item.quantite;
+            }
+        }
+        else
+        {
+            Dictionary<string, double> tarifsP = new Dictionary<string, double> // Prix pour Belle ile ?? 
+        {
+            { "adu26p", 18.80 },
+            { "jeu1825", 14.10 },
+            { "enf417", 11.65 },
+            { "bebe", 0 },
+            { "ancomp", 3.35 }
+        };
+            Dictionary<string, double> tarifsV = new Dictionary<string, double>
+        {
+            { "trot", 4.70 },
+            { "velo", 8.20 },
+            { "velelec", 11.00 },
+            { "cartand", 16.45 },
+            { "mobil", 23.35 },
+            { "moto", 66.40 },
+            { "cat1", 98.50 },
+            { "cat2", 117.20 },
+            { "cat3", 176.90 },
+            { "cat4", 213.35 },
+            { "camp", 332.70 }
+        };
+            foreach (Passager item in reserv.passagers)
+            {
+                totale = totale + tarifsP[item.codeCategorie];
+            }
+            foreach (Vehicule item in reserv.vehicules)
+            {
+                totale = totale + tarifsV[item.codeCategorie] * item.quantite;
+            }
+
+        }
+        return totale;
+    }
 
 }
