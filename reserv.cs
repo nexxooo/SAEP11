@@ -251,7 +251,7 @@ class SAE
     {
         Dictionary<int, string[]> categorie = new Dictionary<int, string[]>
 {
-    { 1, new string[] { "Adulte 26 ans et plus ", "adu26p " } },
+    { 1, new string[] { "Adulte 26 ans et plus ", "adu26p" } },
     { 2, new string[] { "Jeune 18 à 25 ans inclus", "jeu1825" } },
     { 3, new string[] { "Enfant 4 à 17 ans inclus", "enf417" } },
     { 4, new string[] { "Bébé moins de 4 ans", "bebe" } },
