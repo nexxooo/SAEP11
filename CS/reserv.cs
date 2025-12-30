@@ -23,8 +23,9 @@ class SAE
         //Console.WriteLine(test[0].codeCategorie+" "+test[0].quantite);
         Reservation resev = new Reservation();
         resev = demandeReserv();
-	double prix = calculePrix(resev);
-	Console.WriteLine(prix);
+        double prix = calculePrix(resev);
+        //Console.WriteLine(prix);
+	recap(resev);
         //Console.WriteLine(resev.passager[0].nom);	
         //faireJson(resev);
 
@@ -444,6 +445,41 @@ class SAE
 
         }
         return totale;
+    }
+
+    static void recap(Reservation reserv)
+    {
+        double prix = calculePrix(reserv);
+        Console.Clear();
+
+        Console.WriteLine("------------------------------------------------------ \nRécapitulatif:\n");
+
+        Console.WriteLine("Nom de réservation: " + reserv.reservation.nom);
+
+        string nomLigne="";
+        switch (reserv.reservation.idLiaison)
+        {
+            case 1:
+                nomLigne = "Lorient_groix";
+                break;
+            case 2:
+                nomLigne = "Groix_lorient";
+                break;
+            case 3:
+                nomLigne = "Quiberon_palais";
+                break;
+            case 4:
+                nomLigne = "Palais_quiberon";
+                break;
+            default:
+                break;
+        }
+	Console.WriteLine("Traversée: "+nomLigne+"\nDate: "+reserv.reservation.date+"\nDépart: "+reserv.reservation.heure);
+
+	Console.WriteLine("\nNombre Personnes: "+ reserv.passagers.Length+"\nNombre Véhicule: "+reserv.vehicules.Length);
+	Console.WriteLine("\nPrix totale: "+prix);
+
+
     }
 
 }
