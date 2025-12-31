@@ -7,7 +7,8 @@ class SAE
 {
     static void Main()
     {
-        //test
+        //test:
+	//
         //string[] temp = Extraire(1, 15);
         //afficherHoraire(temp);
         //Console.WriteLine(int.Parse("01"));
@@ -21,13 +22,18 @@ class SAE
         //Console.WriteLine(test.heure + "\n" + test.horodatage);
         //Vehicule[] test = DemandeVehicule();
         //Console.WriteLine(test[0].codeCategorie+" "+test[0].quantite);
-        Reservation resev = new Reservation();
-        resev = demandeReserv();
-        double prix = calculePrix(resev);
+        //Reservation resev = new Reservation();
+        //resev = demandeReserv();
+        //double prix = calculePrix(resev);
         //Console.WriteLine(prix);
-	recap(resev);
+	//recap(resev);
         //Console.WriteLine(resev.passager[0].nom);	
         //faireJson(resev);
+	//
+	Reservation reserv = new Reservation();
+	reserv = demandeReserv();
+	recap(reserv);
+	faireJson(reserv);
 
 
 
@@ -120,6 +126,7 @@ class SAE
     // on va remplir une structure Traverse pour commencer la reservation
     static Traverse demandeNom()
     {
+	Console.Clear();
         afficheLogo();
         string nom = "";
         Traverse res = new Traverse();
@@ -460,16 +467,16 @@ class SAE
         switch (reserv.reservation.idLiaison)
         {
             case 1:
-                nomLigne = "Lorient_groix";
+                nomLigne = "Lorient --> groix";
                 break;
             case 2:
-                nomLigne = "Groix_lorient";
+                nomLigne = "Groix --> lorient";
                 break;
             case 3:
-                nomLigne = "Quiberon_palais";
+                nomLigne = "Quiberon --> palais";
                 break;
             case 4:
-                nomLigne = "Palais_quiberon";
+                nomLigne = "Palais --> quiberon";
                 break;
             default:
                 break;
