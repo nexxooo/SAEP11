@@ -8,7 +8,7 @@ class SAE
     static void Main()
     {
         //test:
-	//
+        //
         //string[] temp = Extraire(1, 15);
         //afficherHoraire(temp);
         //Console.WriteLine(int.Parse("01"));
@@ -26,14 +26,15 @@ class SAE
         //resev = demandeReserv();
         //double prix = calculePrix(resev);
         //Console.WriteLine(prix);
-	//recap(resev);
+        //recap(resev);
         //Console.WriteLine(resev.passager[0].nom);	
         //faireJson(resev);
-	//
-	Reservation reserv = new Reservation();
-	reserv = demandeReserv();
-	recap(reserv);
-	faireJson(reserv);
+        //
+        Reservation reserv = new Reservation();
+        reserv = demandeReserv();
+        recap(reserv);
+        faireJson(reserv);
+        retour(reserv);
 
 
 
@@ -126,7 +127,7 @@ class SAE
     // on va remplir une structure Traverse pour commencer la reservation
     static Traverse demandeNom()
     {
-	Console.Clear();
+        Console.Clear();
         afficheLogo();
         string nom = "";
         Traverse res = new Traverse();
@@ -273,11 +274,11 @@ class SAE
 
         foreach (int item in categorie.Keys)
         {
-            Console.WriteLine(item + " " + categorie[item][0]);
+            Console.WriteLine(item + " " + categorie[item][0]); //on affiche l'id et la description a l'utilisateur 
 
         }
         int r = int.Parse(Console.ReadLine());
-        passager.codeCategorie = categorie[r][1];
+        passager.codeCategorie = categorie[r][1]; //on ajoute le bon code selon la reponse 
 
         return passager;
 
@@ -328,11 +329,11 @@ class SAE
         Console.WriteLine("quelle catégorie");
         foreach (var item in categorieVehicules.Keys)
         {
-            Console.WriteLine(item + " " + categorieVehicules[item][0]);
+            Console.WriteLine(item + " " + categorieVehicules[item][0]); //on affiche l'id et le descriptif a l'utilisateur 
         }
 
         int r = int.Parse(Console.ReadLine());
-        vehicule.codeCategorie = categorieVehicules[r][1];
+        vehicule.codeCategorie = categorieVehicules[r][1]; //on ajoute le bon code 
 
         vehicule = qtVehicule(vehicule);
         return vehicule;
@@ -375,7 +376,11 @@ class SAE
 
         json = "[" + json + "]";  // on doit rajoutre les [] au debut et a la fin car notre structure n'est pas dans une liste 
 
-        File.WriteAllText("donnees.json", json); // on ecrase et on remplace dans le fichier 
+        DateTime date = DateTime.Now;
+        string res = date.ToString("dd:hh:mm:ss"); //on cree un nom unique pour chaque fichier 
+	string nomFichier = res +".json";
+
+        File.WriteAllText(nomFichier, json); // on cree le fichier et on ecris notre json
 
     }
 
@@ -463,7 +468,7 @@ class SAE
 
         Console.WriteLine("Nom de réservation: " + reserv.reservation.nom);
 
-        string nomLigne="";
+        string nomLigne = "";
         switch (reserv.reservation.idLiaison)
         {
             case 1:
@@ -481,12 +486,51 @@ class SAE
             default:
                 break;
         }
-	Console.WriteLine("Traversée: "+nomLigne+"\nDate: "+reserv.reservation.date+"\nDépart: "+reserv.reservation.heure);
+        Console.WriteLine("Traversée: " + nomLigne + "\nDate: " + reserv.reservation.date + "\nDépart: " + reserv.reservation.heure);
 
-	Console.WriteLine("\nNombre Personnes: "+ reserv.passagers.Length+"\nNombre Véhicule: "+reserv.vehicules.Length);
-	Console.WriteLine("\nPrix totale: "+prix);
+        Console.WriteLine("\nNombre Personnes: " + reserv.passagers.Length + "\nNombre Véhicule: " + reserv.vehicules.Length);
+        Console.WriteLine("\nPrix totale: " + prix);
+        Console.WriteLine("----------------------------------------------------------------------");
+    }
+    static void retour(Reservation reserv)
+    {
+        Console.WriteLine("voulez vous prendre votre retour ? y/n");
+        string reponse = Console.ReadLine();
 
+        switch (reponse) // on regarde la réponse 
+        {
+            case "y":
+                inverseId(reserv); // on doit inverser l'id pour avoir le chemin retour
+                reserv.reservation = demandeJour(reserv.reservation); // on demande le jour et l'heure pour le retour
+                faireJson(reserv); // on cree le json
+                recap(reserv); // on affiche le recap 
+                break;
 
+            default:
+                break;
+        }
+
+    }
+    static void inverseId(Reservation reserv) //on inverse l'id pour le retour 
+    {
+        switch (reserv.reservation.idLiaison)
+        {
+            case 1:
+                reserv.reservation.idLiaison = 2;
+                break;
+            case 2:
+                reserv.reservation.idLiaison = 1;
+                break;
+            case 3:
+                reserv.reservation.idLiaison = 4;
+                break;
+            case 4:
+                reserv.reservation.idLiaison = 3;
+                break;
+
+            default:
+                break;
+        }
     }
 
 }
