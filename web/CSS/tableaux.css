@@ -1,0 +1,67 @@
+:root{
+	--bg:#023047;
+	--border:#8ecae6;
+	--remplie:#fb8500;
+	--tresRemplie:#c1121f;
+	--pasRemple:#80ed99;
+	--tropRemplie:#ffd500;
+
+}
+
+body{
+	background-color: var(--bg);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+nav{
+	width: 100%;
+
+}
+aside{
+	width: 30%;
+}
+form{
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+	gap: 1rem;
+	width: 50%;
+}
+main{
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	gap:1rem;
+	align-items: center;
+}
+
+section{
+	border-color:black ;
+	border-width: 0.2rem;
+	border-style: solid;
+	border-radius: 1rem;
+	margin: 1rem;
+	width: 30%;
+
+}
+section p{
+	padding: 0.5rem;
+}
+.rouge{
+	box-shadow: inset 0px 0px 20px 5px var(--tresRemplie);
+
+}
+.vert{
+	box-shadow: inset 0px 0px 20px 5px var(--pasRemple);
+
+}
+.orange{
+	box-shadow: inset 0px 0px 20px 5px var(--remplie);
+
+}
+.jaune{
+	box-shadow: inset 0px 0px 20px 5px var(--tropRemplie);
+
+}

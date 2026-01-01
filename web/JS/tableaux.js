@@ -27,9 +27,25 @@ async function info(id, date) {
 
 function placement(data) {
 	let selectMain = document.querySelector("main");
+	selectMain.innerHTML = ""
 
 	data.forEach(element => {
-		selectMain.innerHTML += `<section> <p>heure:${element.heure}</p>
+
+		capa = element.nbReservationVoitures;
+		capamax = element.capaciteVoitures;
+		let code;
+		if (capa > capamax) {
+			code = "jaune"
+		} else if (capa <= capamax / 2) {
+			code = "vert"
+		} else if (capa <= capamax * 0.75) {
+			code = "orange"
+		} else {
+			code = "rouge"
+		}
+
+
+		selectMain.innerHTML += `<section class="${code}" > <p>heure:${element.heure}</p>
 <p>passager: ${element.nbReservationPassagers}/${element.capacitePassagers}</p>
 <p>vehicule: ${element.nbReservationVoitures}/ ${element.capaciteVoitures}</p> 
 </section>`
