@@ -1,0 +1,161 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+main {
+    padding: 20px;
+    padding-top: 50px;
+}
+
+/* CARTE PRINCIPALE */
+.card {
+    display: flex;
+    background-color: #105d9f;
+    border: 3px solid #105d9f;
+    border-radius: 15px;
+    overflow: visible;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 40px;
+    position: relative;
+}
+
+/* LOGO EN HAUT À GAUCHE */
+.company-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid black;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    z-index: 10;
+}
+
+.logo {
+    width: 100Px;
+    height: auto;
+}
+
+.company-name {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    color: #000000;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+/* COLONNE GAUCHE */
+.left-section {
+    padding: 20px;
+    padding-top: 100px;
+    width: 45%;
+}
+
+.trip-info {
+    width: 100%;
+    border-spacing: 8px;
+}
+
+.trip-info .label {
+    color: white;
+    font-style: italic;
+    padding: 8px 10px;
+}
+
+.trip-info .value {
+    background-color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: black;
+}
+
+/* COLONNE DROITE */
+.right-section {
+    padding: 20px;
+    width: 55%;
+}
+
+.card-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+/* BOÎTE BLANCHE DROITE */
+.right-content-box {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* PARTIE HAUTE : Réservation */
+.reservation-info {
+    width: 100%;
+    padding-bottom: 15px;
+    border-bottom: 2px solid black;
+}
+
+.reservation-info .label {
+    color: #006d77;
+    padding: 5px 10px;
+}
+
+.reservation-info .value {
+    font-weight: bold;
+    color: black;
+}
+
+/* PARTIE BASSE : Passager */
+.passenger-section {
+    padding-top: 15px;
+}
+
+.passenger-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.passenger-header span {
+    color: black;
+    font-weight: bold;
+}
+
+.qrcode {
+    width: 60px;
+    height: 60px;
+}
+
+.passenger-info {
+    width: 100%;
+}
+
+.passenger-info .label {
+    color: #006d77;
+    padding: 5px 10px;
+}
+
+.passenger-info .value {
+    font-weight: bold;
+    color: black;
+}
+.nav-menu {
+  display: flex;       /* Active le mode flexible (alignement en ligne par défaut) */
+  list-style: none;    /* Retire les puces (points noirs) */
+  padding: 0;          /* Retire le padding par défaut du navigateur */
+  gap: 20px;           /* Ajoute un espace de 20px entre chaque élément */
+}
