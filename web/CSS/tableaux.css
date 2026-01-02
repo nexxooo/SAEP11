@@ -1,45 +1,78 @@
-:root{
-	--bg:#023047;
-	--border:#8ecae6;
-	--remplie:#fb8500;
-	--tresRemplie:#c1121f;
-	--pasRemple:#80ed99;
-	--tropRemplie:#ffd500;
+:root {
+	--bg: #023047;
+	--border: #8ecae6;
+	--remplie: #fb8500;
+	--tresRemplie: #c1121f;
+	--pasRemple: #80ed99;
+	--tropRemplie: #ffd500;
+	--nav: #1b263b;
+	--navFont: #ffb703;
 
 }
 
-body{
+body {
 	background-color: var(--bg);
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	margin: 0;
 }
 
-nav{
+nav {
 	width: 100%;
+	background-color: var(--nav);
+	padding: 0.3rem;
 
 }
-aside{
+
+ul {
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+
+
+}
+
+nav a {
+	text-decoration: none;
+	/* Enlève le soulignement */
+	color: var(--navFont);
+	/* Le lien prendra la couleur du texte parent (ex: noir) */
+	background-color: #415a77;
+	border-radius: 1rem;
+	padding: 0.5rem;
+}
+
+nav li:hover {
+	transform: translateY(-6px);
+
+
+}
+
+aside {
 	width: 30%;
 }
-form{
+
+form {
 	display: flex;
 	flex-direction: column;
 	padding: 2rem;
 	gap: 1rem;
 	width: 50%;
 }
-main{
+
+main {
 	width: 70%;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	gap:1rem;
+	gap: 1rem;
 	align-items: center;
 }
 
-section{
-	border-color:black ;
+section {
+	border-color: black;
 	border-width: 0.2rem;
 	border-style: solid;
 	border-radius: 1rem;
@@ -47,22 +80,46 @@ section{
 	width: 30%;
 
 }
-section p{
+
+section p {
 	padding: 0.5rem;
+	animation: entreeDouce 0.5s ease-out forwards
 }
-.rouge{
+
+.rouge {
 	box-shadow: inset 0px 0px 20px 5px var(--tresRemplie);
 
 }
-.vert{
+
+.vert {
 	box-shadow: inset 0px 0px 20px 5px var(--pasRemple);
 
 }
-.orange{
+
+.orange {
 	box-shadow: inset 0px 0px 20px 5px var(--remplie);
 
 }
-.jaune{
+
+.jaune {
 	box-shadow: inset 0px 0px 20px 5px var(--tropRemplie);
 
+}
+@keyframes entreeDouce {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Part de 20px plus bas */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);    /* Arrive à sa place normale */
+  }
+}
+
+button{
+	background-color:#415a77;
+	color: var(--navFont);
+	border-radius: 1rem;
+	border-width: 0;
+	padding: 0.5rem;
 }
