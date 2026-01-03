@@ -159,3 +159,7 @@ main {
   padding: 0;          /* Retire le padding par défaut du navigateur */
   gap: 20px;           /* Ajoute un espace de 20px entre chaque élément */
 }
+
+.cacher{
+	display: none;
+}

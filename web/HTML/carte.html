@@ -13,12 +13,18 @@
 		<ul class="nav-menu">
             <li><a href="acceuille.html">Accueil</a></li>
 			<li><a href="facture.html">Afficher la facture d'une réservation</a></li>
-			<li><a href="#">Afficher un tableau de bord</a></li>
+			<li><a href="tableaux.html">Afficher un tableau de bord</a></li>
 			<li><a href="#">Afficher des statistiques</a></li>
 		</ul>
 	</nav>	
    <main>
-        <div class="card">
+	<form>
+		<input type="number" id="reserv" value="1" min="1">
+		<button type="button" onclick="valider()">Valider</button>
+		<button type="button" onclick="suivant()">Suivant</button>
+		<button type="button" onclick="precedent()">Precedent</button>
+	</form>
+        <div class="card cacher" >
             <!-- Logo en position absolue en haut à gauche -->
             <div class="company-header">
                 <img src="../IMAGE/CAN.png" alt="Logo CAN" class="logo"/>
@@ -34,23 +40,23 @@
                 <table class="trip-info">
                     <tr>
                         <td class="label">Gare de départ</td>
-                        <td class="value">Lorient</td>
+                        <td class="value"></td>
                     </tr>
                     <tr>
                         <td class="label">Gare d'arrivée</td>
-                        <td class="value">Groix</td>
+                        <td class="value"></td>
                     </tr>
                     <tr>
                         <td class="label">Date</td>
-                        <td class="value">01/11/2025</td>
+                        <td class="value"></td>
                     </tr>
                     <tr>
                         <td class="label">Heure départ</td>
-                        <td class="value">09:45</td>
+                        <td class="value"></td>
                     </tr>
                     <tr>
                         <td class="label">Bateau</td>
-                        <td class="value">Breizh Nevez</td>
+                        <td class="value"></td>
                     </tr>
                 </table>
             </div>
@@ -69,33 +75,33 @@
                         </tr>
                         <tr>
                             <td class="label">Nom</td>
-                            <td class="value">Famille Addams</td>
+                            <td class="value"></td>
                         </tr>
                     </table>
                     
                     <!-- Partie basse -->
                     <div class="passenger-section">
                         <div class="passenger-header">
-                            <span>Passager</span>
+                            <span id="titre-droit">Passager</span>
                             <img src="qrcode.png" alt="QR Code" class="qrcode"/>
                         </div>
                         
                         <table class="passenger-info">
                             <tr>
                                 <td class="label">Nom</td>
-                                <td class="value">Addams</td>
+                                <td class="value"></td>
                             </tr>
                             <tr>
                                 <td class="label">Prénom</td>
-                                <td class="value">Mercredi</td>
+                                <td class="value"></td>
                             </tr>
                             <tr>
                                 <td class="label">Catégorie</td>
-                                <td class="value">Jeune 18-25 ans</td>
+                                <td class="value"></td>
                             </tr>
                             <tr>
                                 <td class="label">Prix</td>
-                                <td class="value">13,80 €</td>
+                                <td class="value"></td>
                             </tr>
                         </table>
                     </div>
@@ -103,8 +109,8 @@
             </div>
         </div>
     </main>
-    
-    <footer>
-    </footer>
+ <script src="../JS/carte.js">
+ 	
+ </script>   
 </body>
 </html>
