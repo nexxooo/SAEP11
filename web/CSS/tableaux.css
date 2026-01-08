@@ -1,125 +1,195 @@
-:root {
-	--bg: #023047;
-	--border: #8ecae6;
-	--remplie: #fb8500;
-	--tresRemplie: #c1121f;
-	--pasRemple: #80ed99;
-	--tropRemplie: #ffd500;
-	--nav: #1b263b;
-	--navFont: #ffb703;
-
+* {
+    box-sizing: border-box;
 }
 
 body {
-	background-color: var(--bg);
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0b1221; /* Bleu nuit foncé */
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
-	width: 100%;
-	background-color: var(--nav);
-	padding: 0.3rem;
-
+    width: 100%;
+    padding: 15px 0;
+    background: transparent;
 }
 
-ul {
-	list-style-type: none;
-	display: flex;
-	flex-direction: row;
-	gap: 2rem;
-
-
+.nav-menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
 }
 
 nav a {
-	text-decoration: none;
-	/* Enlève le soulignement */
-	color: var(--navFont);
-	/* Le lien prendra la couleur du texte parent (ex: noir) */
-	background-color: #415a77;
-	border-radius: 1rem;
-	padding: 0.5rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.2s;
+    font-size: 14px;
 }
 
-nav li:hover {
-	transform: translateY(-6px);
-
-
+nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    transform: translateY(-2px);
 }
 
+nav li { list-style: none; }
+
+.container-global {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 40px auto;
+    width: 95%;
+    gap: 40px; /* Espace entre form et résultats */
+    align-items: flex-start;
+    justify-content: center;
+    flex-grow: 1; /* Occupe l'espace vertical restant */
+}
+
+/* Zone gauche (Formulaire) */
 aside {
-	width: 30%;
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre horizontalement le form */
+    justify-content: flex-start; /* Le laisse en haut (ou center pour milieu vertical) */
+}
+
+/* Zone droite (Cartes) */
+main {
+    flex: 2;
+    min-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    align-content: flex-start;
 }
 
 form {
-	display: flex;
-	flex-direction: column;
-	padding: 2rem;
-	gap: 1rem;
-	width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    background: #162032;
+    border: 1px solid #2d3b55;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px; /* Empêche qu'il soit trop large */
+    margin: 0 auto; /* Sécurité centrage */
 }
 
-main {
-	width: 70%;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 1rem;
-	align-items: center;
+label {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: -10px; /* Rapproche le label de l'input */
+    font-size: 14px;
+}
+
+input, select {
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #3d4c6a;
+    background: #0b1221;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    width: 100%;
+}
+
+input:focus, select:focus {
+    border-color: #2a9d8f;
+}
+
+/* Astuce pour le calendrier blanc */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+button {
+    background-color: #2a9d8f;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 14px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.1s, background 0.2s;
+}
+
+button:hover {
+    background-color: #2cccb6;
+    transform: translateY(-2px);
 }
 
 section {
-	border-color: black;
-	border-width: 0.2rem;
-	border-style: solid;
-	border-radius: 1rem;
-	margin: 1rem;
-	width: 30%;
+    background: #162032;
+    border: 1px solid #2d3b55;
+    border-radius: 12px;
+    width: 260px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: apparition 0.4s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
+section h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    color: #4ade80;
 }
 
 section p {
-	padding: 0.5rem;
-	animation: entreeDouce 0.5s ease-out forwards
+    margin: 0;
+    font-size: 14px;
+    color: #94a3b8;
 }
 
-.rouge {
-	box-shadow: inset 0px 0px 20px 5px var(--tresRemplie);
+/* Statuts */
+.vert { border-top: 4px solid #4ade80; }
+.orange { border-top: 4px solid #fb923c; }
+.rouge { border-top: 4px solid #ef4444; }
+.jaune { border-top: 4px solid #facc15; }
 
+@keyframes apparition {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.vert {
-	box-shadow: inset 0px 0px 20px 5px var(--pasRemple);
-
-}
-
-.orange {
-	box-shadow: inset 0px 0px 20px 5px var(--remplie);
-
-}
-
-.jaune {
-	box-shadow: inset 0px 0px 20px 5px var(--tropRemplie);
-
-}
-@keyframes entreeDouce {
-  from {
-    opacity: 0;
-    transform: translateY(20px); /* Part de 20px plus bas */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);    /* Arrive à sa place normale */
-  }
-}
-
-button{
-	background-color:#415a77;
-	color: var(--navFont);
-	border-radius: 1rem;
-	border-width: 0;
-	padding: 0.5rem;
+@media (max-width: 850px) {
+    .container-global {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    aside, main {
+        width: 100%;
+        max-width: 500px; /* Limite la largeur sur mobile pour que ça reste beau */
+    }
+    
+    section {
+        width: 100%;
+    }
 }

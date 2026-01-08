@@ -1,55 +1,69 @@
 async function validez() {
-	let date = document.getElementById("date"); //on recupere la date
-	let destination = document.getElementById("destination") //on recuper la destination
-	//let selectelement = document.querySelector("main")
+    let date = document.getElementById("date"); // on récupère la date
+    let destination = document.getElementById("destination"); // on récupère la destination
 
-	//console.log(date.value)
-	//console.log(destination.value)
-
-	//selectelement.innerHTML += `test`
-	data = await info(destination.value, date.value); //on recupere les info des traverse (heure etc)
-	//console.log(data[0].heure)
-	placement(data) //fonction qui placera toutes les carte avec les info des différente traversé 
+    // Appel de l'API pour récupérer les données
+    let data = await info(destination.value, date.value); 
+    
+    // Si on a des données, on lance l'affichage
+    if (data) {
+        placement(data);
+    }
 }
 
-async function info(id, date) { //on recupere les info
-	const API = `https://can.iutrs.unistra.fr/api/liaison/${id}/remplissage/${date}`
-	try {
-		const reponse = await fetch(API);
-		const data = await reponse.json();
+async function info(id, date) { 
+    // On récupère les infos via l'API
+    const API = `https://can.iutrs.unistra.fr/api/liaison/${id}/remplissage/${date}`;
+    
+    try {
+        const reponse = await fetch(API);
+        
+        if (!reponse.ok) {
+            throw new Error(`Erreur HTTP: ${reponse.status}`);
+        }
 
-		return data
+        const data = await reponse.json();
+        return data;
 
-	} catch (error) {
-		console.log("erreur api")
-	}
+    } catch (error) {
+        console.error("Erreur API :", error);
+        alert("Impossible de récupérer les horaires. Vérifiez votre connexion.");
+        return null;
+    }
 }
 
 function placement(data) {
-	let selectMain = document.querySelector("main");
-	selectMain.innerHTML = "" //on enleve toute les carte 
+    let selectMain = document.querySelector("main");
+    selectMain.innerHTML = ""; // On vide le contenu précédent (reset)
 
-	data.forEach(element => { // on regarde le taux de remplissage pour mettre la bonne couleur qui sera une classe dans le css
+    if (data.length === 0) {
+        selectMain.innerHTML = "<p style='color:white; width:100%; text-align:center;'>Aucune traversée trouvée pour cette date.</p>";
+        return;
+    }
 
-		capa = element.nbReservationVoitures;
-		capamax = element.capaciteVoitures;
-		let code;
-		if (capa > capamax) {
-			code = "jaune"
-		} else if (capa <= capamax / 2) {
-			code = "vert"
-		} else if (capa <= capamax * 0.75) {
-			code = "orange"
-		} else {
-			code = "rouge"
-		}
+    data.forEach(element => { 
+        // Calcul du taux de remplissage pour la couleur
+        let capa = element.nbReservationVoitures;
+        let capamax = element.capaciteVoitures;
+        let code = "rouge"; // Par défaut
 
-// on place les carte avec la couleur (classe) et toute les info
-		selectMain.innerHTML += `<section class="${code}" > <p>heure:${element.heure}</p>
-<p>passager: ${element.nbReservationPassagers}/${element.capacitePassagers}</p>
-<p>vehicule: ${element.nbReservationVoitures}/ ${element.capaciteVoitures}</p> 
-</section>`
+        if (capa > capamax) {
+            code = "jaune"; // Surchargé (cas d'erreur ?)
+        } else if (capa <= capamax / 2) {
+            code = "vert"; // Peu rempli
+        } else if (capa <= capamax * 0.75) {
+            code = "orange"; // Moyennement rempli
+        } else {
+            code = "rouge"; // Très rempli
+        }
 
-	});
-
+        // Injection du HTML propre (avec balises section, h3, p bien fermées)
+        selectMain.innerHTML += `
+        <section class="${code}">
+            <h3>Heure : ${element.heure}</h3>
+            <p>Passagers : ${element.nbReservationPassagers} / ${element.capacitePassagers}</p>
+            <p>Véhicules : ${element.nbReservationVoitures} / ${element.capaciteVoitures}</p>
+        </section>
+        `;
+    });
 }

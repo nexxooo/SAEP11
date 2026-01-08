@@ -1,44 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="" href="../CSS/tableaux.css">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Vérifie bien que le chemin vers ton CSS est correct -->
+    <link rel="stylesheet" href="../CSS/tableaux.css">
+    <title>Tableau de bord - BreizhFerry</title>
 </head>
 
 <body>
-	<nav>
-		<ul class="nav-menu">
-			<li><a href="acceuille.html">Accueil</a></li>
-			<li><a href="carte.html">Afficher les cartes d'embarquement d'une réservation</a></li>
-			<li><a href="tableaux.html">Afficher un tableau de bord</a></li>
-			<li><a href="stat.html">Afficher des statistiques</a></li>
-		</ul>
-	</nav>
-	<aside>
-		<form>
-			<select id="destination">
-				<option value="1">Lorient-Groix</option>
-				<option value="2">Groix-Lorient</option>
-				<option value="3">Quiberon-Belle-Ile</option>
-				<option value="4">Belle-Ile-Quiberon</option>
-			</select>
-			<input type="date" id="date" min="2025-11-01" max="2025-11-30" value="2025-11-01">
-			<button type="button" onclick="validez()">Validez</button>
-		</form>
-	</aside>
-	<main>
-		
-	</main>
 
+    <!-- Menu de navigation -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="acceuille.html">Accueil</a></li>
+            <li><a href="carte.html">Mes cartes d'embarquement</a></li>
+            <li><a href="tableaux.html">Tableau de bord</a></li>
+            <li><a href="stat.html">Statistiques</a></li>
+        </ul>
+    </nav>
 
+    <!-- Conteneur global pour centrer le contenu (Aside + Main) -->
+    <div class="container-global">
+        
+        <!-- Colonne de gauche : Formulaire -->
+        <aside>
+            <form>
+                <label for="destination">Choisissez votre traversée</label>
+                <select id="destination">
+                    <option value="1">Lorient ➔ Groix</option>
+                    <option value="2">Groix ➔ Lorient</option>
+                    <option value="3">Quiberon ➔ Belle-Île</option>
+                    <option value="4">Belle-Île ➔ Quiberon</option>
+                </select>
 
+                <label for="date">Choisissez la date</label>
+                <input type="date" id="date" min="2025-11-01" max="2025-11-30" value="2025-11-01">
 
+                <button type="button" onclick="validez()">Rechercher</button>
+            </form>
+        </aside>
 
+        <!-- Colonne de droite : Affichage des cartes -->
+        <main>
+            <!-- Les cartes seront injectées ici par le JS -->
+        </main>
 
-	<script src="../JS/tableaux.js"></script>
+    </div>
+
+    <!-- Script JS -->
+    <script src="../JS/tableaux.js"></script>
+
 </body>
-
 </html>
