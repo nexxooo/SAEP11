@@ -1,22 +1,210 @@
-.nav-menu {
-  display: flex;       /* Active le mode flexible (alignement en ligne par défaut) */
-  list-style: none;    /* Retire les puces (points noirs) */
-  padding: 0;          /* Retire le padding par défaut du navigateur */
-  gap: 40px;           /* Ajoute un espace de 20px entre chaque élément */
-  list-style: none;          /* Retire les puces */
-  margin: 50px 0;            /* Un peu d'espace autour du menu */
-  font-family: 'Segoe UI', sans-serif; /* Police moderne sans empattement */
+/* 1) Base */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background: #000; /* au cas où la vidéo ne charge pas */
 }
-.nav-menu li img {
-    height: 60px;      /* Définit une hauteur fixe pour l'image du logo */
-    width: auto;       /* Ajuste automatiquement la largeur pour conserver les proportions */
+
+.conteneur {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
-.nav-menu a {
-  text-decoration: none;     /* Retire le soulignement bleu moche */
-  color: #333;               /* Couleur gris foncé élégante */
-  font-size: 1.1rem;         /* Texte légèrement plus grand */
-  font-weight: 500;          /* Texte un peu plus gras */
-  padding: 10px 15px;        /* Zone cliquable plus grande */
-  border-radius: 8px;        /* Coins arrondis */
-  transition: all 0.3s ease; /* Animation fluide pour le survol */
+
+a { color: inherit; text-decoration: none; }
+
+/*2) Vidéo de fond
+   - object-fit: cover permet de remplir l'écran (comme background-size: cover) */
+.video_fond {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+} /* [web:18] */
+
+.filtre_fond {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55); /* assombrit pour lisibilité */
+  z-index: -1;
+}
+
+/* 3) En-tête */
+.entete {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.entete__contenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+}
+
+.marque {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marque__logo {
+  width: 75px;
+  height: 70px;
+}
+
+.marque__nom {
+  font-weight: bold;
+  letter-spacing: 0.3px;
+}
+
+.navigation {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.navigation__lien {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navigation__lien:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* 4) Page / Hero plein écran */
+.page {
+  min-height: calc(100vh - 120px); /* laisse place header + footer */
+  display: flex;
+}
+
+.hero {
+  width: 100%;
+  display: flex;
+  align-items: center;   /* centre verticalement */
+  padding: 40px 0;
+}
+
+.hero__contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero__titre {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1.1;
+}
+
+.hero__sous_titre {
+  margin: 0;
+  font-size: 18px;
+  max-width: 65ch;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* 5) Boutons */
+.hero__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bouton {
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.bouton--principal {
+  background: #2a9d8f;
+  border-color: #2a9d8f;
+}
+
+.bouton--principal:hover {
+  background: #23877b;
+}
+
+.bouton--secondaire {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.bouton--secondaire:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* 6) Cartes (hub) */
+
+.cartes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.carte {
+  flex: 1;
+  min-width: 240px;
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.carte:hover {
+  background: rgba(0, 0, 0, 0.45);
+  border-color: rgba(42, 157, 143, 0.8);
+}
+
+.carte__titre { margin: 0 0 6px; font-size: 16px; }
+.carte__texte { margin: 0; color: rgba(255, 255, 255, 0.85); }
+
+/* 7) Pied de page */
+.pied_page {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.pied_page__contenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pied_page__lien:hover {
+  text-decoration: underline;
+}
+
+/* 8) Responsive */
+@media (max-width: 700px) {
+  .entete__contenu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pied_page__contenu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__titre {
+    font-size: 30px;
+  }
 }
