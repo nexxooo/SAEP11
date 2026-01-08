@@ -1,0 +1,72 @@
+:root {
+	--bg: #023047;
+	--border: #8ecae6;
+	--nav: #1b263b;
+	--navFont: #ffb703;
+
+}
+
+body {
+	background-color: var(--bg);
+	margin: 0;
+}
+
+nav {
+	width: 100%;
+	background-color: var(--nav);
+	padding: 0.3rem;
+
+}
+
+ul {
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+
+
+}
+
+nav a {
+	text-decoration: none;
+	color: var(--navFont);
+	background-color: #415a77;
+	border-radius: 1rem;
+	padding: 0.5rem;
+}
+
+nav li:hover {
+	transform: translateY(-6px);
+
+
+}
+main{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+section {
+	border-color: black;
+	border-width: 0.2rem;
+	border-style: solid;
+	border-radius: 1rem;
+	margin: 1rem;
+	width: 40%;
+
+}
+
+section p {
+	padding: 0.5rem;
+	animation: entreeDouce 0.5s ease-out forwards
+}
+
+#cag{
+	width: 100%;
+	text-align: center;
+	font-size: 3rem;
+	color: red;
+}
