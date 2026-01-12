@@ -1,6 +1,6 @@
 async function main() {
 
-	for (i = 1; i < 5; i++) {
+	for (i = 1; i < 5; i++) {  // on place les stat des 4 traversé 
 		liaison = await infoL(i)
 		placement(liaison)
 	}
@@ -8,7 +8,7 @@ async function main() {
 
 }
 
-async function infoL(id) {
+async function infoL(id) { // on recuprer les info des la traversé (id)
 	const api = `https://can.iutrs.unistra.fr/api/liaison/${id}/chiffreAffaire`
 
 	try {
@@ -23,11 +23,12 @@ async function infoL(id) {
 	}
 }
 
-function placement(data) {
+function placement(data) { //on place un carte pour la traverser avce toute les info de celle ci 
 	selectmain = document.querySelector("main");
 
 
 	console.log(data.nom)
+	// on arrondie les chiffre pour les differents ca 
 	selectmain.innerHTML += `<section> <p>nom: ${data.nom}</p> 
 <p>Passager:</p> <hr> <p>nombre passagers: ${data.passagers.nombre}</p> <p>CA passagers: ${Math.round(data.passagers.chiffreAffaire)}</p>
 
@@ -38,12 +39,15 @@ function placement(data) {
 
 
 function caglobale(){
-	selectca = document.querySelectorAll(".ca")
+	selectca = document.querySelectorAll(".ca") //on récupere un liste avec le ca de chaque traversé 
 
 	sum = 0 
+	// on les additionne 
 	selectca.forEach(element => {
 		sum += parseInt(element.textContent)
 	});
+
+	//on le rajoute a la fin 
 
 	selectmain = document.querySelector("main")
 
