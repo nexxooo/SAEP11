@@ -5,7 +5,47 @@
 }
 
 body {
-	font-family: Arial, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #0b1221;
+	color: white;
+	min-height: 100vh;
+}
+
+nav {
+	width: 100%;
+	padding: 15px 0;
+	background: transparent;
+}
+
+.nav-menu {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin: 0;
+	padding: 0;
+	flex-wrap: wrap;
+}
+
+.nav-menu li {
+	list-style: none;
+}
+
+.nav-menu a {
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.8);
+	font-weight: bold;
+	padding: 8px 16px;
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.05);
+	transition: all 0.2s;
+	font-size: 14px;
+}
+
+.nav-menu a:hover {
+	background: rgba(255, 255, 255, 0.15);
+	color: white;
+	transform: translateY(-2px);
 }
 
 main {
@@ -13,38 +53,77 @@ main {
 	padding-top: 50px;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	gap: 30px;
 }
 
-/* CARTE PRINCIPALE */
+form {
+	display: flex;
+	gap: 10px;
+	background: #162032;
+	border: 1px solid #2d3b55;
+	border-radius: 12px;
+	padding: 20px;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+form input {
+	padding: 12px;
+	border-radius: 8px;
+	border: 1px solid #3d4c6a;
+	background: #0b1221;
+	color: white;
+	width: 80px;
+	text-align: center;
+	font-size: 15px;
+}
+
+form button {
+	background-color: #2a9d8f;
+	color: white;
+	border-radius: 8px;
+	border: none;
+	padding: 12px 16px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	transition: transform 0.1s, background 0.2s;
+}
+
+form button:hover {
+	background-color: #2cccb6;
+	transform: translateY(-2px);
+}
+
 .card {
 	display: flex;
-	background-color: #105d9f;
-	border: 3px solid #105d9f;
-	border-radius: 15px;
+	background-color: #162032;
+	border: 1px solid #2d3b55;
+	border-radius: 16px;
 	overflow: visible;
 	max-width: 800px;
 	margin: auto;
 	margin-top: 40px;
 	position: relative;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* LOGO EN HAUT À GAUCHE */
 .company-header {
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	background-color: white;
+	background-color: #0b1221;
 	padding: 15px;
-	border-radius: 10px;
-	border: 2px solid black;
+	border-radius: 12px;
+	border: 1px solid #2d3b55;
 	position: absolute;
-	top: -2px;
-	left: -2px;
+	top: -12px;
+	left: -12px;
 	z-index: 10;
 }
 
 .logo {
-	width: 100Px;
+	width: 100px;
 	height: auto;
 }
 
@@ -52,12 +131,11 @@ main {
 	display: flex;
 	flex-direction: column;
 	font-size: 12px;
-	color: #000000;
+	color: white;
 	font-weight: bold;
 	line-height: 1.3;
 }
 
-/* COLONNE GAUCHE */
 .left-section {
 	padding: 20px;
 	padding-top: 100px;
@@ -70,20 +148,20 @@ main {
 }
 
 .trip-info .label {
-	color: white;
+	color: #94a3b8;
 	font-style: italic;
 	padding: 8px 10px;
 }
 
 .trip-info .value {
-	background-color: white;
+	background-color: #0b1221;
 	padding: 8px 15px;
-	border-radius: 5px;
+	border-radius: 8px;
 	font-weight: bold;
-	color: black;
+	color: white;
+	border: 1px solid #3d4c6a;
 }
 
-/* COLONNE DROITE */
 .right-section {
 	padding: 20px;
 	width: 55%;
@@ -92,35 +170,32 @@ main {
 .card-title {
 	font-size: 24px;
 	margin-bottom: 15px;
-	color: white;
+	color: #4ade80;
 }
 
-/* BOÎTE BLANCHE DROITE */
 .right-content-box {
-	background-color: white;
-	border: 2px solid black;
-	border-radius: 10px;
+	background-color: #0b1221;
+	border: 1px solid #2d3b55;
+	border-radius: 12px;
 	padding: 15px;
 }
 
-/* PARTIE HAUTE : Réservation */
 .reservation-info {
 	width: 100%;
 	padding-bottom: 15px;
-	border-bottom: 2px solid black;
+	border-bottom: 1px solid #2d3b55;
 }
 
 .reservation-info .label {
-	color: #006d77;
+	color: #94a3b8;
 	padding: 5px 10px;
 }
 
 .reservation-info .value {
 	font-weight: bold;
-	color: black;
+	color: white;
 }
 
-/* PARTIE BASSE : Passager */
 .passenger-section {
 	padding-top: 15px;
 }
@@ -133,13 +208,14 @@ main {
 }
 
 .passenger-header span {
-	color: black;
+	color: white;
 	font-weight: bold;
 }
 
 .qrcode {
 	width: 60px;
 	height: 60px;
+	filter: invert(1);
 }
 
 .passenger-info {
@@ -147,38 +223,30 @@ main {
 }
 
 .passenger-info .label {
-	color: #006d77;
+	color: #94a3b8;
 	padding: 5px 10px;
 }
 
 .passenger-info .value {
 	font-weight: bold;
-	color: black;
-}
-
-.nav-menu {
-	display: flex;
-	/* Active le mode flexible (alignement en ligne par défaut) */
-	list-style: none;
-	/* Retire les puces (points noirs) */
-	padding: 0;
-	/* Retire le padding par défaut du navigateur */
-	gap: 20px;
-	/* Ajoute un espace de 20px entre chaque élément */
+	color: white;
 }
 
 .cacher {
 	display: none;
 }
 
-/* --- VERSION MOBILE --- */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
+	form {
+		flex-direction: column;
+		width: 100%;
+		max-width: 400px;
+	}
 
 	.card {
 		flex-direction: column;
 		width: 95%;
 		margin-top: 20px;
-		height: auto;
 	}
 
 	.company-header {
@@ -187,9 +255,7 @@ main {
 		left: auto;
 		width: 100%;
 		justify-content: center;
-		border-radius: 10px 10px 0 0;
-		margin-bottom: 0;
-		border-bottom: none;
+		border-radius: 12px 12px 0 0;
 	}
 
 	.left-section,
@@ -200,12 +266,6 @@ main {
 
 	.left-section {
 		padding-top: 20px;
-	}
-
-	.right-content-box {
-		background-color: white;
-		width: 100%;
-		margin-top: 10px;
 	}
 
 	.card-title {
