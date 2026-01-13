@@ -1,146 +1,185 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #0b1221;
+	color: white;
+	min-height: 100vh;
+}
+
+nav {
+	width: 100%;
+	padding: 15px 0;
+	background: transparent;
+}
+
+.nav-menu {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin: 0;
+	padding: 0;
+	flex-wrap: wrap;
+}
+
+.nav-menu li {
+	list-style: none;
+}
+
+.nav-menu a {
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.8);
+	font-weight: bold;
+	padding: 8px 16px;
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.05);
+	transition: all 0.2s;
+	font-size: 14px;
+}
+
+.nav-menu a:hover {
+	background: rgba(255, 255, 255, 0.15);
+	color: white;
+	transform: translateY(-2px);
 }
 
 main {
-    padding: 20px;
+	padding: 40px 20px;
+	display: flex;
+	justify-content: center;
 }
 
-/* FACTURE PRINCIPALE */
 .facture {
-    background-color: white;
-    border: 3px solid #000000;
-    border-radius: 15px;
-    max-width: 700px;
-    margin: auto;
-    padding: 30px;
+	background-color: #162032;
+	border: 1px solid #2d3b55;
+	border-radius: 16px;
+	max-width: 700px;
+	width: 100%;
+	padding: 30px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* EN-TÊTE LOGO */
 .facture-header {
-    text-align: center;
-    margin-bottom: 20px;
+	text-align: center;
+	margin-bottom: 20px;
 }
 
 .logo {
-    width: 300px;
-    height: auto;
+	width: 220px;
+	height: auto;
 }
 
 .company-name {
-    font-size: 36px;
-    font-weight: bold;
-    color: #000000;
-    letter-spacing: 10px;
+	font-size: 28px;
+	font-weight: bold;
+	color: white;
+	letter-spacing: 6px;
 }
 
 .company-subtitle {
-    font-size: 14px;
-    color: #000000;
+	font-size: 14px;
+	color: #94a3b8;
 }
 
-/* TITRE FACTURE */
 .facture-title {
-    text-align: center;
-    font-size: 24px;
-    text-decoration: underline;
-    margin: 30px 0;
-    color: black;
+	text-align: center;
+	font-size: 22px;
+	margin: 30px 0;
+	color: #4ade80;
 }
 
-/* DATE ET LIEU */
 .date-lieu {
-    color: #000000;
-    margin-bottom: 20px;
+	color: #94a3b8;
+	margin-bottom: 20px;
 }
 
-/* SECTIONS D'INFOS */
 .info-section {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .info-section .label {
-    font-weight: bold;
-    color: black;
+	font-weight: bold;
+	color: white;
 }
 
 .info-section .value {
-    color: #000000;
+	color: #94a3b8;
 }
 
-/* SECTIONS TABLEAUX */
 .table-section {
-    margin-bottom: 25px;
+	margin-bottom: 25px;
 }
 
 .table-section h3 {
-    color: black;
-    margin-bottom: 10px;
-    font-size: 14px;
+	color: white;
+	margin-bottom: 10px;
+	font-size: 14px;
 }
 
-/* TABLEAUX DE DONNÉES */
 .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 10px;
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 10px;
 }
 
 .data-table th {
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    padding: 8px;
-    text-align: left;
-    border: 1px solid #000000;
+	background-color: #0b1221;
+	color: white;
+	font-weight: bold;
+	padding: 10px;
+	text-align: left;
+	border: 1px solid #2d3b55;
 }
 
 .data-table td {
-    padding: 8px;
-    border: 1px solid #000000;
-    color: #000000;
+	padding: 10px;
+	border: 1px solid #2d3b55;
+	color: #94a3b8;
 }
 
 .data-table tbody tr:nth-child(even) {
-    background-color: #f5f5f5;
+	background-color: #10192e;
 }
 
-/* SOUS-TOTAUX */
 .sous-total {
-    text-align: right;
-    color: #000000;
-    margin-top: 10px;
+	text-align: right;
+	color: #94a3b8;
+	margin-top: 10px;
 }
 
 .sous-total span {
-    font-weight: bold;
+	font-weight: bold;
+	color: white;
 }
 
-/* PRIX TOTAL */
 .prix-total {
-    text-align: right;
-    font-size: 18px;
-    margin-top: 20px;
+	text-align: right;
+	font-size: 18px;
+	margin-top: 20px;
 }
 
 .prix-total .label {
-    font-weight: bold;
-    color: black;
+	font-weight: bold;
+	color: white;
 }
 
 .prix-total .value {
-    font-weight: bold;
-    color: #000000;
+	font-weight: bold;
+	color: #4ade80;
 }
-.nav-menu {
-  display: flex;       /* Active le mode flexible (alignement en ligne par défaut) */
-  list-style: none;    /* Retire les puces (points noirs) */
-  padding: 0;          /* Retire le padding par défaut du navigateur */
-  gap: 20px;           /* Ajoute un espace de 20px entre chaque élément */
+
+@media (max-width: 850px) {
+	.facture {
+		padding: 20px;
+	}
+
+	.company-name {
+		font-size: 22px;
+		letter-spacing: 4px;
+	}
 }
