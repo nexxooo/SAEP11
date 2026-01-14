@@ -145,7 +145,7 @@ class SAE
         Console.Clear();
         afficheLogo();
         Console.WriteLine("Quelle liaison voulez vous prendre ? \n 1) Lorient --> Groix \n 2) Groix --> Lorient \n 3) Quiberon --> Palais \n 4) Palais --> Quiberon ");
-        Console.WriteLine("Entre le numéro");
+        Console.WriteLine("Entrez le numéro");
         int.TryParse(Console.ReadLine(), out id);
         traverse.idLiaison = id;
         traverse = demandeJour(traverse);
@@ -158,7 +158,7 @@ class SAE
         string date = "2025-11-";
         Console.Clear();
         afficheLogo();
-        Console.WriteLine("Quelle jour de novembre 2025 vous vous partir ?");
+        Console.WriteLine("Quel jour de novembre 2025 vous vous partir ?");
         jour = Console.ReadLine();
         if (jour.Length < 2) // on rajoute un zero si l'utilisateur donne qu'un chiffre pour respecter le format demandé
         {
@@ -181,7 +181,7 @@ class SAE
         afficheLogo();
 
         int heure;
-        Console.WriteLine("Quelle heure ?");
+        Console.WriteLine("Choissez l'heure");
         // on prend les 2 dernier caractère pour avoir le jour
         int jour = int.Parse(traverse.date.Substring(8, 2));
         //on appelle Extraire pour récuperer un tableau des horaire du jour
@@ -214,7 +214,7 @@ class SAE
     {
         Console.Clear();
         afficheLogo();
-        Console.WriteLine("combien de passager ?"); // on demande le nombre de passager
+        Console.WriteLine("combien de passagers ?"); // on demande le nombre de passager
         int nombre;
         nombre = int.Parse(Console.ReadLine());
 
@@ -235,7 +235,7 @@ class SAE
     {
         Console.Clear();
         afficheLogo();
-        Console.WriteLine("entrer nom passager");
+        Console.WriteLine("entrez le nom passager");
 
         string nom;
         nom = Console.ReadLine();
@@ -249,7 +249,7 @@ class SAE
     {
         Console.Clear();
         afficheLogo();
-        Console.WriteLine("entrer prénom passager");
+        Console.WriteLine("entrez le prénom passager");
 
         string prenom;
         prenom = Console.ReadLine();
@@ -270,7 +270,7 @@ class SAE
 };
         Console.Clear();
         afficheLogo();
-        Console.WriteLine("quelle catégorie");
+        Console.WriteLine("Quelle catégorie ?");
 
         foreach (int item in categorie.Keys)
         {
@@ -292,7 +292,7 @@ class SAE
     {
         Console.Clear();
         afficheLogo();
-        Console.WriteLine("combien de Vehicule ?"); // on demande le nombre de passager
+        Console.WriteLine("combien de véhicules ?"); // on demande le nombre de passager
         int nombre;
         nombre = int.Parse(Console.ReadLine());
 
@@ -343,7 +343,7 @@ class SAE
     {
         Console.Clear();
         afficheLogo();
-        Console.WriteLine("quelle quantitée ?");
+        Console.WriteLine("Quelle quantité ?");
 
         int qt = int.Parse(Console.ReadLine());
         vehicule.quantite = qt;
@@ -377,7 +377,7 @@ class SAE
         json = "[" + json + "]";  // on doit rajoutre les [] au debut et a la fin car notre structure n'est pas dans une liste 
 
         DateTime date = DateTime.Now;
-        string res = date.ToString("dd:hh:mm:ss"); //on cree un nom unique pour chaque fichier 
+        string res = date.ToString("dd-hh-mm-ss"); //on cree un nom unique pour chaque fichier 
 	string nomFichier = res +".json";
 
         File.WriteAllText(nomFichier, json); // on cree le fichier et on ecris notre json
