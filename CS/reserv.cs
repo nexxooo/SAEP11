@@ -486,10 +486,10 @@ class SAE
             default:
                 break;
         }
-        Console.WriteLine("Traversée: " + nomLigne + "\nDate: " + reserv.reservation.date + "\nDépart: " + reserv.reservation.heure);
+        Console.WriteLine("Traversée: " + nomLigne + "\nDate: " + reserv.reservation.date + "\nDépart: " + reserv.reservation.heure+"h");
 
         Console.WriteLine("\nNombre Personnes: " + reserv.passagers.Length + "\nNombre Véhicule: " + reserv.vehicules.Length);
-        Console.WriteLine("\nPrix totale: " + prix);
+        Console.WriteLine("\nPrix totale: " + prix +" €");
         Console.WriteLine("----------------------------------------------------------------------");
     }
     static void retour(Reservation reserv)
